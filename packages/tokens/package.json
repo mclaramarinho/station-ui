@@ -1,0 +1,15 @@
+{
+  "name": "@station-ui/tokens",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "style-dictionary build"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.5.3"
+  }
+}

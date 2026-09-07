@@ -1,12 +1,28 @@
 {
-  "name": "station_ui_components",
+  "name": "station-ui",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
-  "author": "",
+  "license": "MIT",
+  "author": "Clara Marinho",
   "type": "commonjs",
   "main": "index.js",
+  "packageManager": "npm@11.17.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev"
+  },
+
+  "dependencies": {
+    "@station-ui/tokens": "workspace:*"
+  },
+
+  "devDependencies": {
+    "turbo": "^2.10.12",
+    "typescript": "^7.0.2"
   }
 }
