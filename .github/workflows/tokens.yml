@@ -1,0 +1,56 @@
+name: Validate design tokens
+
+on:
+  push:
+    paths:
+      - ".github/workflows/tokens.yml"
+      - "package.json"
+      - "package-lock.json"
+      - "packages/core/tokens/**"
+  pull_request:
+    paths:
+      - ".github/workflows/tokens.yml"
+      - "package.json"
+      - "package-lock.json"
+      - "packages/core/tokens/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Generate and validate token outputs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate token outputs
+        run: npm run build --workspace @station-ui/tokens
+
+      - name: Validate generated JavaScript
+        run: node --input-type=module --check < packages/core/tokens/src/generated/js/tokens.js
+
+      - name: Validate generated SCSS
+        run: npm exec --workspace @station-ui/tokens -- sass --no-source-map src/generated/scss/_tokens.scss /tmp/station-ui-tokens.css
+
+      - name: Analyze generated Dart
+        run: dart analyze packages/core/tokens/src/generated/dart/tokens.dart
+
+      - name: Check generated Dart formatting
+        run: dart format --output=none --set-exit-if-changed packages/core/tokens/src/generated/dart/tokens.dart

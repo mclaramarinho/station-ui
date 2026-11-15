@@ -22,18 +22,15 @@ can be reordered as the project and its users evolve.
 
 - A JSON token source at `packages/core/tokens/src/tokens.json`.
 - Style Dictionary generation for SCSS, JavaScript, and Dart tokens.
+- CI checks that regenerate and validate the generated token outputs.
 - Sass utility sources for typography, spacing, borders, and effects.
 - SVG assets grouped into `outline`, `solid`, and `custom` collections.
 - Documentation for the repository, token utilities, and icon assets.
 
 ### Known gaps
 
-- The root npm workspaces use `packages/*` and `apps/*`, but core packages are
-  nested under `packages/core/*`.
 - Core package entry points, dependency relationships, and publish strategy
   are not yet established.
-- Generated token files are ignored and there are no automated checks ensuring
-  generated outputs stay valid.
 - The icon collection has no generation, packaging, or automated validation
   pipeline.
 - React, React Native, Vue, and Flutter component packages and demo apps do not
@@ -43,20 +40,20 @@ can be reordered as the project and its users evolve.
 
 ### 1. Stabilize the foundations
 
-- [ ] Decide and document the intended npm workspace layout and fix workspace
-  discovery so root commands include the core packages.
-- [ ] Give core token and icon packages valid, consistent package names,
-  manifests, entry points, and dependency declarations.
+- [x] Configure npm workspace discovery for the nested core packages and use
+  valid package names.
+- [ ] Define stable public entry points, package dependencies, and versioning
+  for core packages.
 - [ ] Define token naming, types, units, aliases, and compatibility rules.
 - [ ] Review the generated JavaScript and Dart outputs for platform-specific
   semantics, including React Native needs and Flutter color/size use.
-- [ ] Add automated tests or checks for token generation, Dart analysis, and
-  generated output validity.
+- [x] Add CI checks that regenerate SCSS, JavaScript, and Dart tokens and
+  validate each generated output.
 - [ ] Document how to add a token and how changes affect supported platforms.
 
 **Complete when:** a clean dependency install and documented root commands can
-build and validate the core packages, and token changes can be checked across
-all configured outputs.
+build and validate token outputs, and token changes can be checked across all
+configured formats.
 
 ### 2. Establish icon source and outputs
 

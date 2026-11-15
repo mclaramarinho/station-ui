@@ -1,0 +1,10 @@
+{
+  "name": "@station-ui/core",
+  "version": "1.0.0",
+  "description": "Core Station UI design tokens and icons",
+  "license": "MIT",
+  "dependencies": {
+    "@station-ui/icons": "^1.0.0",
+    "@station-ui/tokens": "^1.0.0"
+  }
+}
