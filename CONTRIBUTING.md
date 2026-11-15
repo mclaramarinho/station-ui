@@ -20,15 +20,11 @@ Use Node.js 22 or newer and npm. Install dependencies from the repository root:
 npm install
 ```
 
-Core packages currently live under `packages/core/*`, while the root npm
-workspaces only match `packages/*` and `apps/*`. Until workspace discovery is
-updated, run package commands directly rather than assuming root Turbo commands
-include the core packages.
-
-To rebuild design-token outputs:
+Core packages live under `packages/core/*` and are included in the root npm
+workspaces. To rebuild design-token outputs, run:
 
 ```sh
-npm --prefix packages/core/tokens run build
+npm run build --workspace @station-ui/tokens
 ```
 
 ## Making changes

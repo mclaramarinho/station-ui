@@ -1,5 +1,5 @@
 {
-  "name": "@station-ui/core/tokens",
+  "name": "@station-ui/tokens",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -10,6 +10,7 @@
     "build": "node build.mjs"
   },
   "devDependencies": {
+    "sass": "^1.89.2",
     "style-dictionary": "^5.5.3"
   }
 }
