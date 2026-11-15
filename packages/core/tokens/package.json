@@ -19,7 +19,8 @@
     "src/tokens.json",
     "config.json",
     "build.mjs",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "node build.mjs",
