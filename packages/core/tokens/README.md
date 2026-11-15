@@ -6,10 +6,24 @@ Include the relevant stylesheet in your Sass build to use its classes.
 ## Generated tokens
 
 Run `npm run build` in this package to generate SCSS, JavaScript, and Dart
-tokens under `src/generated`. Dart colors are emitted as ARGB integers, pixel
+tokens under `src/generated`. The npm package publishes the JavaScript and
+SCSS outputs; the Dart output is generated locally for validation and is not
+included in the npm package. Dart colors are emitted as ARGB integers, pixel
 dimensions as `double` literals, percentages as fractional numbers, and other
 values as strings. In Flutter, wrap a color token with `Color(...)` when a
 `Color` value is needed.
+
+The published package exposes the generated JavaScript tokens from its root:
+
+```js
+import { ColorSlate500 } from '@station-ui/tokens';
+```
+
+It also exports the SCSS variables as `@station-ui/tokens/scss` and the
+utility sources under `@station-ui/tokens/styles/*`. Sass consumers can use
+these paths with the Dart Sass `pkg:` importer. The package builds the
+published outputs during `npm pack`/publish, so generated output does not need
+to be committed.
 
 ## Typography
 
