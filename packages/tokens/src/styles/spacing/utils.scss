@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+@use '../../tokens' as tokens;
+
+$spacing-margin: ();
+$spacing-padding: ();
+
+// Collect margin and padding token values and derive their utility names.
+@each $variable-name, $value in meta.module-variables('tokens') {
+  @if string.index($variable-name, 'spacing-m-') == 1 {
+    $name: string.slice($variable-name, 11);
+    $spacing-margin: map.set($spacing-margin, $name, $value);
+  }
+
+  @if string.index($variable-name, 'spacing-p-') == 1 {
+    $name: string.slice($variable-name, 11);
+    $spacing-padding: map.set($spacing-padding, $name, $value);
+  }
+}

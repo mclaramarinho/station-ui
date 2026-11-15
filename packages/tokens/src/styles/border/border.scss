@@ -1,0 +1,22 @@
+@use 'utils' as *;
+@use '../utils' as *;
+
+@each $name, $width in $border-widths {
+  .border-#{$name} {
+    border-width: px-to-rem($width);
+    border-style: solid;
+  }
+
+  @each $style-name, $style-value in $border-styles {
+    .border-#{$name}-#{$style-name} {
+      border-width: px-to-rem($width);
+      border-style: $style-value;
+    }
+  }
+}
+
+@each $name, $radius in $border-radius {
+  .radius-#{$name} {
+    border-radius: px-to-rem($radius);
+  }
+}
