@@ -35,14 +35,15 @@ npm run build --workspace @station-ui/tokens
 - Update the Style Dictionary configuration or generator when output behavior
   changes.
 - Rebuild and validate every affected platform output.
-- Generated files under `packages/core/tokens/src/generated/` are ignored by
-  Git. Do not edit or commit them; commit the source tokens and generator
-  changes instead.
+- Generated JavaScript and Sass files under
+  `packages/core/tokens/src/generated/` are ignored by Git. The generated Dart
+  API at `packages/flutter/tokens/lib/generated/tokens.dart` is checked in for
+  pub.dev consumers; regenerate it, but do not edit it directly.
 - When changing Dart generation, validate the generated file with:
 
   ```sh
-  dart analyze packages/core/tokens/src/generated/dart/tokens.dart
-  dart format --output=none --set-exit-if-changed packages/core/tokens/src/generated/dart/tokens.dart
+  dart analyze packages/flutter/tokens
+  dart format --output=none --set-exit-if-changed packages/flutter/tokens/lib
   ```
 
 ### Icons

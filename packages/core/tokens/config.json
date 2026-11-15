@@ -23,7 +23,7 @@
     },
     "flutter": {
       "transformGroup": "flutter",
-      "buildPath": "src/generated/dart/",
+      "buildPath": "../../flutter/tokens/lib/generated/",
       "files": [
         {
           "destination": "tokens.dart",

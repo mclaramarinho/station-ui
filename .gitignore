@@ -2,3 +2,5 @@ node_modules/
 .turbo/cache/
 turbo-build.log
 **/src/generated/
+**/.dart_tool/
+**/pubspec.lock
