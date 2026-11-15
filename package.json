@@ -9,16 +9,14 @@
   "packageManager": "npm@11.17.0",
   "workspaces": [
     "packages/*",
+    "packages/core",
+    "packages/core/*",
     "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "lint": "turbo run lint",
     "dev": "turbo run dev"
-  },
-
-  "dependencies": {
-    "@station-ui/tokens": "workspace:*"
   },
 
   "devDependencies": {

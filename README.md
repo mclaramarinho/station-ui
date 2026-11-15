@@ -18,15 +18,23 @@ libraries and example apps are planned; they are not implemented yet.
 ```text
 packages/
   core/
+    package.json             # Umbrella package: tokens + icons
     tokens/
       src/
         tokens.json          # Canonical token values
         styles/              # Sass utility styles
         generated/           # Generated outputs; ignored by Git
+      package.json           # Tokens package
     icons/
       assets/                # Source SVG icons
+      package.json           # Icons package
 apps/                         # Planned demos and documentation apps
 ```
+
+Install both core foundations with `npm install @station-ui/core`, or install
+only `@station-ui/tokens` or `@station-ui/icons`. The core package is an
+installation umbrella; use the individual package names to consume their
+contents. See [the core package README](packages/core/README.md) for details.
 
 The generated token outputs currently target SCSS, JavaScript, and Dart. The
 JavaScript output can provide shared values to web frameworks; React Native may
@@ -43,16 +51,17 @@ dependencies:
 npm install
 ```
 
-The token package is nested under `packages/core/tokens`. Build its generated
-SCSS, JavaScript, and Dart outputs with:
+Build the token package's SCSS, JavaScript, and Dart outputs with:
 
 ```sh
-npm --prefix packages/core/tokens run build
+npm run build --workspace @station-ui/tokens
 ```
 
 Generated files are written to `packages/core/tokens/src/generated/` and are
 intentionally ignored by Git. Rebuild them after changing the source tokens or
-the Style Dictionary configuration; do not edit generated files directly.
+the Style Dictionary configuration; do not edit generated files directly. The
+GitHub Actions workflow regenerates and validates these outputs on relevant
+pull requests.
 
 ## Working on tokens
 
@@ -62,7 +71,7 @@ the Style Dictionary configuration; do not edit generated files directly.
 3. Generate all configured outputs:
 
    ```sh
-   npm --prefix packages/core/tokens run build
+   npm run build --workspace @station-ui/tokens
    ```
 
 4. Validate the generated Dart file when changing Dart output:
@@ -95,11 +104,12 @@ npm run lint
 npm run dev
 ```
 
-The root npm workspaces currently match `packages/*` and `apps/*`; the core
-packages are nested one level deeper at `packages/core/*`. As a result, do not
-assume root workspace commands currently discover or build the core packages.
-Use the direct token build command above until workspace discovery is aligned.
-Resolving this is part of the [project roadmap](ROADMAP.md).
+The root npm workspaces include `packages/core/*`, so you can also build tokens
+from the repository root with:
+
+```sh
+npm run build --workspace @station-ui/tokens
+```
 
 ## Roadmap
 
