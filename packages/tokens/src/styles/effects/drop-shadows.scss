@@ -1,0 +1,7 @@
+@use 'utils' as *;
+
+@each $name, $value in $drop-shadows {
+  .drop-shadow-#{$name} {
+    filter: drop-shadow(#{shadow-to-rem($value)} #{$shadow-color});
+  }
+}

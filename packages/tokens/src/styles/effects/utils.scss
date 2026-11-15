@@ -1,0 +1,59 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+@use '../../tokens' as tokens;
+@use '../utils' as *;
+
+$shadow-color: tokens.$shadow-color;
+$shadows: ();
+$drop-shadows: ();
+$blurs: ();
+$backdrop-blurs: ();
+$backdrop-opacities: ();
+
+// Convert px dimensions in a shadow token to rem while preserving its list structure.
+@function shadow-to-rem($shadow) {
+  $converted-shadow: ();
+
+  @for $index from 1 through list.length($shadow) {
+    $value: list.nth($shadow, $index);
+
+    @if meta.type-of($value) == number and math.unit($value) == 'px' {
+      $value: px-to-rem($value);
+    }
+
+    $converted-shadow: list.append($converted-shadow, $value, list.separator($shadow));
+  }
+
+  @return $converted-shadow;
+}
+
+// Collect shadow token values to generate effect classes from the token source.
+@each $variable-name, $value in meta.module-variables('tokens') {
+  @if string.index($variable-name, 'shadow-') == 1 and $variable-name != 'shadow-color' {
+    $name: string.slice($variable-name, 8);
+    $shadows: map.set($shadows, $name, $value);
+  }
+
+  @if string.index($variable-name, 'drop-shadow-') == 1 {
+    $name: string.slice($variable-name, 13);
+    $drop-shadows: map.set($drop-shadows, $name, $value);
+  }
+
+  @if string.index($variable-name, 'blur-') == 1 {
+    $name: string.slice($variable-name, 6);
+    $blurs: map.set($blurs, $name, $value);
+  }
+
+  @if string.index($variable-name, 'backdrop-blur-') == 1 {
+    $name: string.slice($variable-name, 15);
+    $backdrop-blurs: map.set($backdrop-blurs, $name, $value);
+  }
+
+  @if string.index($variable-name, 'backdrop-opacity-') == 1 and $variable-name != 'backdrop-opacity-color' {
+    $name: string.slice($variable-name, 18);
+    $backdrop-opacities: map.set($backdrop-opacities, $name, $value);
+  }
+}

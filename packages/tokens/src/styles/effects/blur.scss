@@ -1,0 +1,8 @@
+@use 'utils' as *;
+@use '../utils' as *;
+
+@each $name, $value in $blurs {
+  .blur-#{$name} {
+    filter: blur(px-to-rem($value));
+  }
+}
