@@ -1,0 +1,31 @@
+# Contributing to `@station-ui/core`
+
+This package only coordinates installation of the npm token and icon packages.
+For changes to their APIs or contents, follow the
+[tokens guide](tokens/CONTRIBUTING.md) or
+[icons guide](icons/CONTRIBUTING.md).
+
+## Setup and validation
+
+From the repository root, install the npm workspace dependencies:
+
+```sh
+npm ci
+```
+
+To inspect the package tarball contents:
+
+```sh
+npm pack --dry-run --workspace @station-ui/core
+```
+
+## Package changes
+
+- Keep `dependencies` and the package version in `package.json` consistent
+  with the npm packages being installed.
+- Publish `@station-ui/tokens` and `@station-ui/icons` before publishing this
+  package when their versions change.
+- Update this package's README and changelog when its consumer behavior or
+  installation dependencies change.
+- This package has no build or test scripts. Validate the package tarball and
+  run the checks for any dependency package that changed.
