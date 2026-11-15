@@ -3,6 +3,14 @@
 The Sass files in `src/styles` generate utility classes from the design tokens.
 Include the relevant stylesheet in your Sass build to use its classes.
 
+## Generated tokens
+
+Run `npm run build` in this package to generate SCSS, JavaScript, and Dart
+tokens under `src/generated`. Dart colors are emitted as ARGB integers, pixel
+dimensions as `double` literals, percentages as fractional numbers, and other
+values as strings. In Flutter, wrap a color token with `Color(...)` when a
+`Color` value is needed.
+
 ## Typography
 
 Source: `src/styles/typography/typography.scss`

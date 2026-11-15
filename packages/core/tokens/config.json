@@ -3,11 +3,34 @@
   "platforms": {
     "scss": {
       "transformGroup": "scss",
-      "buildPath": "src/",
+      "buildPath": "src/generated/scss/",
       "files": [
         {
-          "destination": "tokens.scss",
+          "destination": "_tokens.scss",
           "format": "scss/variables"
+        }
+      ]
+    },
+    "js": {
+      "transformGroup": "js",
+      "buildPath": "src/generated/js/",
+      "files": [
+        {
+          "destination": "tokens.js",
+          "format": "javascript/es6"
+        }
+      ]
+    },
+    "flutter": {
+      "transformGroup": "flutter",
+      "buildPath": "src/generated/dart/",
+      "files": [
+        {
+          "destination": "tokens.dart",
+          "format": "station/dart-class",
+          "options": {
+            "className": "StationTokens"
+          }
         }
       ]
     }

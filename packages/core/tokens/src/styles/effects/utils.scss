@@ -3,7 +3,7 @@
 @use 'sass:math';
 @use 'sass:meta';
 @use 'sass:string';
-@use '../../tokens' as tokens;
+@use '../../generated/scss/tokens' as tokens;
 @use '../utils' as *;
 
 $shadow-color: tokens.$shadow-color;

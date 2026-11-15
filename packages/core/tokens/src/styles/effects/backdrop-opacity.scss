@@ -1,6 +1,6 @@
 @use 'sass:color';
 @use 'utils' as *;
-@use '../../tokens' as tokens;
+@use '../../generated/scss/tokens' as tokens;
 
 @each $name, $opacity in $backdrop-opacities {
   .backdrop-opacity-#{$name} {
