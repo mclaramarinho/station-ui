@@ -1,0 +1,43 @@
+{
+  "name": "@station-ui/icons-react-native",
+  "version": "1.0.0",
+  "description": "React Native SVG icon components for Station UI",
+  "license": "MIT",
+  "author": "Clara Marinho",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "react-native": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./outline": {
+      "types": "./src/outline.d.ts",
+      "import": "./src/outline.js"
+    },
+    "./solid": {
+      "types": "./src/solid.d.ts",
+      "import": "./src/solid.js"
+    },
+    "./custom": {
+      "types": "./src/custom.d.ts",
+      "import": "./src/custom.js"
+    }
+  },
+  "files": [
+    "src",
+    "README.md",
+    "CHANGELOG.md",
+    "ROADMAP.md",
+    "CONTRIBUTING.md"
+  ],
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-native": ">=0.71.0",
+    "react-native-svg": ">=13.0.0"
+  }
+}
