@@ -10,15 +10,20 @@
   clipped.
 - Inspect intrinsic dimensions and colors; existing assets do not all use the
   same conventions or inherit `currentColor`.
-- Do not add framework-wrapped or generated copies of artwork.
+- Keep SVG elements and attributes within the supported subset in
+  `scripts/icon-generation-utils.mjs`; generation fails on unsupported
+  markup instead of silently omitting it.
+- Do not manually edit generated framework components. After changing SVGs,
+  run `npm run generate:icons` from the repository root.
 - Update this package's README and changelog when its consumer-facing behavior
   changes.
 
 ## Validate
 
-There is no automated icon validation pipeline yet. Review changed SVG files
-visually and inspect the package contents from the repository root:
+Review changed SVG files visually, regenerate all framework packages, and
+inspect the source package contents from the repository root:
 
 ```sh
+npm run generate:icons
 npm pack --dry-run --workspace @station-ui/icons
 ```

@@ -10,12 +10,16 @@
     "packages/*",
     "packages/core",
     "packages/core/*",
+    "packages/react/*",
+    "packages/vue/*",
+    "packages/react-native/*",
     "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "dev": "turbo run dev"
+    "dev": "turbo run dev",
+    "generate:icons": "node packages/core/icons/scripts/generate-framework-icons.mjs"
   },
 
   "devDependencies": {
