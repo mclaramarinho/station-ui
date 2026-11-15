@@ -40,11 +40,15 @@ pipeline.
 
 - There is no icon build or export script yet.
 - There are no React, React Native, Vue, or Flutter icon components yet.
-- `package.json` does not currently define a public entry point for importing
-  icons as a package.
-- The package's existing `test` script is only a placeholder; there are no
-  automated icon validation tests yet.
+- There are no automated icon validation tests yet.
 
-For now, use the SVG files directly from the repository. Follow the main
+The published package exposes SVG files by collection, for example:
+
+```js
+import arrowRight from '@station-ui/icons/outline/arrow-right.svg';
+```
+
+This is an asset path, not a framework-independent icon component; your
+bundler must support importing SVG files. Follow the main
 [Station UI README](../../../README.md) for the overall project status and
 roadmap.
