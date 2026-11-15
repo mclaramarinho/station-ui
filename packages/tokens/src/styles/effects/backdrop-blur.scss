@@ -1,0 +1,8 @@
+@use 'utils' as *;
+@use '../utils' as *;
+
+@each $name, $value in $backdrop-blurs {
+  .backdrop-blur-#{$name} {
+    backdrop-filter: blur(px-to-rem($value));
+  }
+}

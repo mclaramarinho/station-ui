@@ -1,0 +1,40 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+@use '../../tokens' as tokens;
+
+/* Maps =========================================== */
+$font-weights: ();
+$text-sizes: ();
+
+// Build the typography maps from matching tokens, so new token variables are included automatically.
+@each $variable-name, $value in meta.module-variables('tokens') {
+  // Use the part between the prefix and suffix as the map key.
+  @if string.index($variable-name, 'text-fw-') == 1 and string.slice($variable-name, -12) == '-font-weight' {
+    $name: string.slice($variable-name, 9, string.length($variable-name) - 12);
+    $font-weights: map.set($font-weights, $name, $value);
+  }
+
+  // Collect font-size tokens the same way, preserving names such as "2xl".
+  @if string.index($variable-name, 'text-size-') == 1 and string.slice($variable-name, -10) == '-font-size' {
+    $name: string.slice($variable-name, 11, string.length($variable-name) - 10);
+    $text-sizes: map.set($text-sizes, $name, $value);
+  }
+}
+
+/* Functions =========================================== */
+// clamp function
+@function clampFont($min, $preferred, $max) {
+  @return clamp($min, $preferred, $max);
+}
+
+@function fontClamp($min-size, $max-size) {
+  $min-vw: 320px;
+  $max-vw: 1440px;
+
+  @return clamp(
+    #{$min-size},
+    calc(#{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))),
+    #{$max-size}
+  );
+}

@@ -1,0 +1,28 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use 'sass:string';
+@use '../../tokens' as tokens;
+
+/* Maps =========================================== */
+$border-radius: ();
+$border-widths: ();
+$border-styles: ();
+
+// Build border maps from token variables, so new matching tokens are included automatically.
+@each $variable-name, $value in meta.module-variables('tokens') {
+  @if string.index($variable-name, 'radius-') == 1 {
+    // Remove the radius prefix to use the token name as the map key.
+    $name: string.slice($variable-name, 8);
+    $border-radius: map.set($border-radius, $name, $value);
+  }
+
+  @if string.index($variable-name, 'border-') == 1 and meta.type-of($value) == number {
+    $name: string.slice($variable-name, 8);
+    $border-widths: map.set($border-widths, $name, $value);
+  }
+
+  @if string.index($variable-name, 'border-') == 1 and meta.type-of($value) == string {
+    $name: string.slice($variable-name, 8);
+    $border-styles: map.set($border-styles, $name, $value);
+  }
+}

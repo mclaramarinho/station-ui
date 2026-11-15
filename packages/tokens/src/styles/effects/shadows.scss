@@ -1,0 +1,7 @@
+@use 'utils' as *;
+
+@each $name, $value in $shadows {
+  .shadow-#{$name} {
+    box-shadow: #{shadow-to-rem($value)} #{$shadow-color};
+  }
+}

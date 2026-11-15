@@ -1,0 +1,21 @@
+@use './utils' as *;
+@use '../utils' as *;
+
+$previous-size: null;
+
+@each $name, $size in $text-sizes {
+  $min-size: $size;
+
+  @if $previous-size != null {
+    $min-size: $previous-size;
+  }
+
+  @each $weight-name, $weight-value in $font-weights {
+    .text-#{$name}-#{$weight-name} {
+      font-size: fontClamp($min-size, $size);
+      font-weight: $weight-value;
+    }
+  }
+
+  $previous-size: $size;
+}
