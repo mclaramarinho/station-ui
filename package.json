@@ -4,8 +4,7 @@
   "description": "",
   "license": "MIT",
   "author": "Clara Marinho",
-  "type": "commonjs",
-  "main": "index.js",
+  "private": true,
   "packageManager": "npm@11.17.0",
   "workspaces": [
     "packages/*",

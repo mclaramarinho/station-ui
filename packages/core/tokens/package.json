@@ -1,13 +1,29 @@
 {
   "name": "@station-ui/tokens",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "description": "Station UI design tokens and Sass utilities",
+  "license": "MIT",
+  "author": "Clara Marinho",
+  "type": "module",
+  "main": "./src/generated/js/tokens.js",
+  "module": "./src/generated/js/tokens.js",
+  "exports": {
+    ".": "./src/generated/js/tokens.js",
+    "./scss": "./src/generated/scss/_tokens.scss",
+    "./styles/*": "./src/styles/*"
+  },
+  "files": [
+    "src/generated/js",
+    "src/generated/scss",
+    "src/styles",
+    "src/tokens.json",
+    "config.json",
+    "build.mjs",
+    "README.md"
+  ],
   "scripts": {
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "prepack": "npm run build"
   },
   "devDependencies": {
     "sass": "^1.89.2",

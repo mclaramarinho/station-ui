@@ -1,12 +1,16 @@
 {
   "name": "@station-ui/icons",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "description": "Station UI source SVG icon assets",
+  "license": "MIT",
+  "author": "Clara Marinho",
+  "exports": {
+    "./outline/*": "./assets/outline/*",
+    "./solid/*": "./assets/solid/*",
+    "./custom/*": "./assets/custom/*"
+  },
+  "files": [
+    "assets",
+    "README.md"
+  ]
 }

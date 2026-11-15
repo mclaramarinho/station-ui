@@ -29,8 +29,9 @@ can be reordered as the project and its users evolve.
 
 ### Known gaps
 
-- Core package entry points, dependency relationships, and publish strategy
-  are not yet established.
+- npm entry points are defined for token JavaScript/SCSS and SVG assets;
+  packages use synchronized versions, with the private root excluded from
+  publishing.
 - The icon collection has no generation, packaging, or automated validation
   pipeline.
 - React, React Native, Vue, and Flutter component packages and demo apps do not
@@ -42,8 +43,8 @@ can be reordered as the project and its users evolve.
 
 - [x] Configure npm workspace discovery for the nested core packages and use
   valid package names.
-- [ ] Define stable public entry points, package dependencies, and versioning
-  for core packages.
+- [x] Define public npm entry points, package dependencies, and a synchronized
+  release order for core packages.
 - [ ] Define token naming, types, units, aliases, and compatibility rules.
 - [ ] Review the generated JavaScript and Dart outputs for platform-specific
   semantics, including React Native needs and Flutter color/size use.
