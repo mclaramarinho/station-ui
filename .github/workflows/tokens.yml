@@ -7,12 +7,14 @@ on:
       - "package.json"
       - "package-lock.json"
       - "packages/core/tokens/**"
+      - "packages/flutter/tokens/**"
   pull_request:
     paths:
       - ".github/workflows/tokens.yml"
       - "package.json"
       - "package-lock.json"
       - "packages/core/tokens/**"
+      - "packages/flutter/tokens/**"
   workflow_dispatch:
 
 permissions:
@@ -49,8 +51,8 @@ jobs:
       - name: Validate generated SCSS
         run: npm exec --workspace @station-ui/tokens -- sass --no-source-map src/generated/scss/_tokens.scss /tmp/station-ui-tokens.css
 
-      - name: Analyze generated Dart
-        run: dart analyze packages/core/tokens/src/generated/dart/tokens.dart
+      - name: Analyze Flutter token package
+        run: dart analyze packages/flutter/tokens
 
       - name: Check generated Dart formatting
-        run: dart format --output=none --set-exit-if-changed packages/core/tokens/src/generated/dart/tokens.dart
+        run: dart format --output=none --set-exit-if-changed packages/flutter/tokens/lib

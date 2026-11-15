@@ -23,24 +23,32 @@ packages/
       src/
         tokens.json          # Canonical token values
         styles/              # Sass utility styles
-        generated/           # Generated outputs; ignored by Git
+        generated/           # Generated JavaScript and Sass; ignored by Git
       package.json           # Tokens package
     icons/
       assets/                # Source SVG icons
       package.json           # Icons package
+  flutter/
+    tokens/
+      pubspec.yaml           # Publishable Dart token package
+      lib/
+        station_ui_tokens.dart
+        generated/tokens.dart
 apps/                         # Planned demos and documentation apps
 ```
 
 Install both core foundations with `npm install @station-ui/core`, or install
 only `@station-ui/tokens` or `@station-ui/icons`. The core package is an
 installation umbrella; use the individual package names to consume their
-contents. See [the core package README](packages/core/README.md) for details.
+contents. Flutter and Dart projects can install the token package separately
+with `flutter pub add station_ui_tokens`. See
+[the core package README](packages/core/README.md) for npm details.
 
-The generated token outputs currently target SCSS, JavaScript, and Dart. The
-JavaScript output can provide shared values to web frameworks; React Native may
-need a dedicated output if its platform-specific value requirements differ.
-Flutter components should use Dart/Flutter APIs rather than trying to consume
-the Sass utilities.
+The token source generates SCSS and JavaScript for the npm package and Dart
+constants for the `station_ui_tokens` package on pub.dev. The JavaScript token
+API can be used by React, Vue, and React Native projects; Flutter projects use
+the Dart package. The icon package publishes source SVG assets for web bundlers;
+framework-specific icon APIs are not included yet.
 
 ## Getting started
 
@@ -57,8 +65,10 @@ Build the token package's SCSS, JavaScript, and Dart outputs with:
 npm run build --workspace @station-ui/tokens
 ```
 
-Generated files are written to `packages/core/tokens/src/generated/` and are
-intentionally ignored by Git. Rebuild them after changing the source tokens or
+Generated JavaScript and Sass files are written to
+`packages/core/tokens/src/generated/` and ignored by Git. The generated Dart
+package API is written to `packages/flutter/tokens/lib/generated/tokens.dart`
+and checked in for pub.dev consumers. Rebuild after changing source tokens or
 the Style Dictionary configuration; do not edit generated files directly. The
 GitHub Actions workflow regenerates and validates these outputs on relevant
 pull requests.
@@ -77,11 +87,12 @@ pull requests.
 4. Validate the generated Dart file when changing Dart output:
 
    ```sh
-   dart analyze packages/core/tokens/src/generated/dart/tokens.dart
-   dart format --output=none --set-exit-if-changed packages/core/tokens/src/generated/dart/tokens.dart
+   dart analyze packages/flutter/tokens
+   dart format --output=none --set-exit-if-changed packages/flutter/tokens/lib
    ```
 
-5. Commit source and configuration changes, not generated files.
+5. Commit source and configuration changes, along with the generated Dart file
+   needed by the pub.dev package. Do not commit generated npm output.
 
 Token generation currently emits SCSS variables, JavaScript ES modules, and a
 Dart `StationTokens` class. Dart colors are ARGB integer literals; wrap them
