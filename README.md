@@ -8,6 +8,11 @@ The repository currently contains the shared token source, generated token
 outputs, Sass utilities, and a collection of SVG icons. Platform component
 libraries and example apps are planned; they are not implemented yet.
 
+## Design references
+
+- [Dockyard](https://dockyard.com)
+- [Station UI Figma UI Kit](https://www.figma.com/community/file/1338983767724300048/station-ui-an-open-source-design-system-and-component-library)
+
 ## Repository layout
 
 ```text
@@ -94,38 +99,9 @@ The root npm workspaces currently match `packages/*` and `apps/*`; the core
 packages are nested one level deeper at `packages/core/*`. As a result, do not
 assume root workspace commands currently discover or build the core packages.
 Use the direct token build command above until workspace discovery is aligned.
-Resolving this is included in the roadmap.
+Resolving this is part of the [project roadmap](ROADMAP.md).
 
 ## Roadmap
 
-### Foundations
-
-- [x] Establish a canonical JSON token source.
-- [x] Generate SCSS and JavaScript token outputs.
-- [x] Generate Dart tokens with Dart-compatible literals.
-- [x] Collect SVG icon source assets.
-- [ ] Align npm workspace discovery and package names/dependencies with the
-  nested `packages/core/*` layout.
-- [ ] Define stable public entry points and versioning for core packages.
-- [ ] Add automated token generation checks and tests for each generated
-  format.
-
-### Platform libraries
-
-- [ ] Build the React component package with documented props, accessibility,
-  and tests.
-- [ ] Build the React Native component package using native components and
-  platform-appropriate tokens.
-- [ ] Build the Vue component package using Vue conventions.
-- [ ] Build the Flutter component package as a Dart package with Flutter-native
-  widgets and theme integration.
-- [ ] Add platform-specific icon outputs or adapters while keeping the SVG
-  assets as the shared source where practical.
-
-### Developer experience and releases
-
-- [ ] Add documentation and example apps for each supported platform.
-- [ ] Add consistent lint, test, and build checks to CI.
-- [ ] Document installation, theming, migration, and supported platform
-  versions.
-- [ ] Define release automation and publish the platform packages.
+See [ROADMAP.md](ROADMAP.md) for the detailed project direction, milestones,
+and completion criteria.
