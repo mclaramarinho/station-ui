@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'sass:string';
-@use '../../tokens' as tokens;
+@use '../../generated/scss/tokens' as tokens;
 
 $spacing-margin: ();
 $spacing-padding: ();
