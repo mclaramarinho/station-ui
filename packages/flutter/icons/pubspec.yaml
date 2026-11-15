@@ -1,0 +1,14 @@
+name: station_ui_icons
+description: SVG icon widgets for Station UI.
+version: 1.0.0
+repository: https://github.com/mclaramarinho/station-ui-components
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.0.10
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
