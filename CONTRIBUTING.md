@@ -75,9 +75,6 @@ force one platform's component implementation onto another.
   changes are not included.
 - Update the relevant package documentation when behavior, usage, or supported
   values change.
-- In the pull request description, summarize the change, list validation
-  performed, and note any limitations or follow-up work.
-
-There are no repository-wide pull request or commit-message templates yet; use
-clear, descriptive titles and include enough context for reviewers to
-understand the change.
+- Fill out the [pull request template](.github/PULL_REQUEST_TEMPLATE.md) with a
+  summary, validation results, and any limitations or follow-up work.
+- Use a clear, descriptive pull request title.
