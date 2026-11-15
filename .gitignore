@@ -1,3 +1,4 @@
 node_modules/
 .turbo/cache/
 turbo-build.log
+**/src/generated/
