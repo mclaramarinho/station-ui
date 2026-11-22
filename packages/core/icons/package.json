@@ -30,5 +30,8 @@
     "assets",
     "README.md",
     "CHANGELOG.md"
-  ]
+  ],
+  "scripts": {
+    "pack:dry-run": "npm pack --dry-run"
+  }
 }

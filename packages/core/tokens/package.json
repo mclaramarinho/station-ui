@@ -42,7 +42,7 @@
   "scripts": {
     "build": "node build.mjs",
     "prepack": "npm run build",
-    "pre-publish": "npm pack --dry-run"
+    "pack:dry-run": "npm pack --dry-run"
   },
   "devDependencies": {
     "sass": "^1.89.2",
