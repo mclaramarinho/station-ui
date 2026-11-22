@@ -86,11 +86,24 @@ function visit(packageInfo) {
 
 for (const packageInfo of changedPackages) visit(packageInfo);
 
+if (!process.env.NODE_AUTH_TOKEN) {
+  throw new Error(
+    "Missing npm authentication. Configure NPM_TOKEN_BETA in the NPM_TOKEN environment.",
+  );
+}
+
 for (const { manifest } of orderedPackages) {
   console.log(`Publishing ${manifest.name}@${manifest.version} with the beta tag`);
   execFileSync(
     "npm",
     ["publish", "--workspace", manifest.name, "--tag", "beta", "--access", "public"],
-    { stdio: "inherit" },
+    {
+      stdio: "inherit",
+      env: {
+        ...process.env,
+        NODE_AUTH_TOKEN: process.env.NODE_AUTH_TOKEN,
+        NPM_CONFIG_TOKEN: process.env.NODE_AUTH_TOKEN,
+      },
+    },
   );
 }
