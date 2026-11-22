@@ -3,7 +3,25 @@
   "version": "1.0.0",
   "description": "React Native SVG icon components for Station UI",
   "license": "MIT",
-  "author": "Clara Marinho",
+  "author": "Clara Marinho <marinho.claramb@gmail.com>",
+  "maintainers": [
+    "Clara Marinho <marinho.claramb@gmail.com>"
+  ],
+  "keywords": [
+    "icons",
+    "React Native",
+    "SVG",
+    "UI",
+    "stationui",
+    "design system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mclaramarinho/station-ui"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./src/index.js",
   "module": "./src/index.js",
@@ -30,11 +48,11 @@
   },
   "files": [
     "src",
-    "README.md",
-    "CHANGELOG.md",
-    "ROADMAP.md",
-    "CONTRIBUTING.md"
+    "README.md"
   ],
+  "scripts": {
+    "pack:dry-run": "npm pack --dry-run"
+  },
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-native": ">=0.71.0",
