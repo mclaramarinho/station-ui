@@ -1,0 +1,38 @@
+name: Publish prerelease packages
+
+on:
+  push:
+    branches:
+      - prerelease
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish changed npm packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build packages
+        run: npm run build
+
+      - name: Publish changed packages with the beta tag
+        run: node scripts/publish-beta.mjs "$BASE_SHA" "$GITHUB_SHA"
+        env:
+          BASE_SHA: ${{ github.event.before }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
