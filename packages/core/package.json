@@ -2,11 +2,32 @@
   "name": "@station-ui/core",
   "version": "1.0.0",
   "description": "Core Station UI design tokens and icons",
+  "author": "Clara Marinho <marinho.claramb@gmail.com>",
+  "maintainers": [
+    "Clara Marinho <marinho.claramb@gmail.com>"
+  ],
+  "keywords": [
+    "design",
+    "tokens",
+    "UI",
+    "icons",
+    "stationui",
+    "design system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mclaramarinho/station-ui"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "files": [
-    "README.md",
-    "CHANGELOG.md"
+    "README.md"
   ],
+  "scripts": {
+    "pre-publish": "npm pack --dry-run"
+  },
   "dependencies": {
     "@station-ui/icons": "^1.0.0",
     "@station-ui/tokens": "^1.0.0"

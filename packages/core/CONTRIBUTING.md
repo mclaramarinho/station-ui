@@ -16,8 +16,10 @@ npm ci
 To inspect the package tarball contents:
 
 ```sh
-npm pack --dry-run --workspace @station-ui/core
+npm run pre-publish --workspace @station-ui/core
 ```
+
+This runs `npm pack --dry-run`; the package has no build or test scripts.
 
 ## Package changes
 
