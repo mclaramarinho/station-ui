@@ -2,11 +2,19 @@
   "$schema": "https://turborepo.org/schema.json",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", "src/tokens.css"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        "src/tokens.css"
+      ]
     },
     "lint": {
       "outputs": []
+    },
+    "pack:dry-run": {
+      "cache": false
     },
     "dev": {
       "cache": false,

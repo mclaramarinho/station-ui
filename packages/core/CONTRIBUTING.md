@@ -13,13 +13,15 @@ From the repository root, install the npm workspace dependencies:
 npm ci
 ```
 
-To inspect the package tarball contents:
+To inspect packages changed from `origin/prerelease`, run from the repository
+root:
 
 ```sh
-npm run pre-publish --workspace @station-ui/core
+npm run pre-publish
 ```
 
-This runs `npm pack --dry-run`; the package has no build or test scripts.
+This runs `npm pack --dry-run` for each changed core npm package. The package
+has no build or test scripts.
 
 ## Package changes
 
