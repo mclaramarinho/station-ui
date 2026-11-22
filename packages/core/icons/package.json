@@ -3,7 +3,24 @@
   "version": "1.0.0",
   "description": "Station UI source SVG icon assets",
   "license": "MIT",
-  "author": "Clara Marinho",
+  "author": "Clara Marinho <marinho.claramb@gmail.com>",
+  "maintainers": [
+    "Clara Marinho <marinho.claramb@gmail.com>"
+  ],
+  "keywords": [
+    "icons",
+    "SVG",
+    "UI",
+    "stationui",
+    "design system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mclaramarinho/station-ui"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     "./outline/*": "./assets/outline/*",
     "./solid/*": "./assets/solid/*",
