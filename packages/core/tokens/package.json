@@ -3,7 +3,25 @@
   "version": "1.0.0",
   "description": "Station UI design tokens and Sass utilities",
   "license": "MIT",
-  "author": "Clara Marinho",
+  "author": "Clara Marinho <marinho.claramb@gmail.com>",
+  "maintainers": [
+    "Clara Marinho <marinho.claramb@gmail.com>"
+  ],
+  "keywords": [
+    "design",
+    "tokens",
+    "Sass",
+    "JavaScript",
+    "stationui",
+    "design system"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mclaramarinho/station-ui"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./src/generated/js/tokens.js",
   "module": "./src/generated/js/tokens.js",
@@ -19,12 +37,12 @@
     "src/tokens.json",
     "config.json",
     "build.mjs",
-    "README.md",
-    "CHANGELOG.md"
+    "README.md"
   ],
   "scripts": {
     "build": "node build.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "pre-publish": "npm pack --dry-run"
   },
   "devDependencies": {
     "sass": "^1.89.2",
